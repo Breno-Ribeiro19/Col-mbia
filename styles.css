@@ -1,0 +1,92 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    background-color: #4285f4;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+header p {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.team-container {
+    text-align: center;
+}
+
+.team-container h2 {
+    background-color: #4285f4;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.team-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.team-member {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 10px;
+    flex: 1 1 calc(33.333% - 40px);
+    box-sizing: border-box;
+}
+
+.team-photo {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.team-info h3 {
+    margin: 10px 0 5px;
+    font-size: 18px;
+}
+
+.team-info p {
+    margin: 5px 0 10px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.linkedin-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #0077b5;
+    font-weight: 500;
+}

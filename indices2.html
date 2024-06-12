@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css" />
+    <title>Indicadores Socioeconómicos</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-bar {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .nav-bar img {
+            height: 24px;
+            width: auto;
+        }
+        main {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .chart-container {
+            width: 80%;
+            max-width: 800px;
+            margin-bottom: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        canvas {
+            width: 100% !important;
+            height: auto !important;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Indicadores Socioeconómicos
+       </header>
+
+        <div class="nav-bar">
+            <a href="indices.html"><img src="./public/flag-1@2x.png" alt="Brasil" /></a>
+            <a href="indices2.html"><img src="./public/colombia-1@2x.png" alt="Colombia" /></a>
+        </div>
+   
+    <main>
+        <div class="chart-container">
+            <canvas id="lineChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="barChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="radarChart"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="polarAreaChart"></canvas>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Gráfico de Líneas
+        const lineCtx = document.getElementById('lineChart').getContext('2d');
+        const lineChart = new Chart(lineCtx, {
+            type: 'line',
+            data: {
+                labels: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                datasets: [
+                    {
+                        label: 'Tasa de Desempleo (%) - Brasil',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        data: [8.3, 11.5, 12.8, 12.3, 11.9, 13.5, 13.5, 9.5, 8.7, 8.3]
+                    },
+                    {
+                        label: 'Tasa de Desempleo (%) - Colombia',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        data: [9.1, 9.2, 9.4, 9.6, 10.5, 16.3, 14.2, 11.0, 10.1, 9.9]
+                    }
+                ]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Gráfico de Barras
+        const barCtx = document.getElementById('barChart').getContext('2d');
+        const barChart = new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Brasil', 'Colombia', 'Argentina', 'Chile', 'Perú', 'México'],
+                datasets: [{
+                    label: 'Inversión en Educación (en miles de millones)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    data: [47.0, 30.2, 25.3, 22.5, 19.7, 60.5]
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Gráfico de Radar
+        const radarCtx = document.getElementById('radarChart').getContext('2d');
+        const radarChart = new Chart(radarCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Infraestructura', 'Educación', 'Salud', 'Economía', 'Seguridad', 'Ocio', 'Medio Ambiente'],
+                datasets: [
+                    {
+                        label: 'Brasil',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        data: [60, 70, 75, 65, 60, 55, 50]
+                    },
+                    {
+                        label: 'Colombia',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        data: [55, 65, 70, 60, 55, 50, 45]
+                    }
+                ]
+            },
+            options: {}
+        });
+
+        // Gráfico de Área Polar
+        const polarCtx = document.getElementById('polarAreaChart').getContext('2d');
+        const polarChart = new Chart(polarCtx, {
+            type: 'polarArea',
+            data: {
+                labels: ['Agricultura', 'Industria', 'Servicios', 'Comercio', 'Tecnología'],
+                datasets: [{
+                    label: 'Sectores de la Economía',
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1,
+                    data: [20, 25, 30, 15, 10]
+                }]
+            },
+            options: {}
+        });
+    </script>
+</body>
+</html>
